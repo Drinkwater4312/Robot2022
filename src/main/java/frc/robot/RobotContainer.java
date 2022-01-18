@@ -19,7 +19,6 @@ import frc.robot.commands.*;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
-//Github commit example
 
 public class RobotContainer {
   /*
