@@ -19,50 +19,54 @@ public class RobotContainer {
   --------------------------------------------------------Subsystems-------------------------------------------------------------------------
   */
 
-  //Drive related subsystems
+  //Drive subsystems
 
   private final DriveTrainSubsystem sub_driveTrainSubsystem = new DriveTrainSubsystem();
   
-  //Lift related subsystems
+  //Lift subsystems
 
   private final LiftSubsystem sub_liftSubsystem = new LiftSubsystem();
 
-  //Feed related subsystems
+  //Feed subsystems
 
   private final FeedSubsystem sub_feedSubsystem = new FeedSubsystem();
 
-   //Intake related subsystems
+  //Intake subsystems
 
   private final IntakeSubsystem sub_intakeSubsystem = new IntakeSubsystem();
 
-  //Shooter related subsystems
+  //Shooter subsystems
 
+  private final AimSubsystem sub_aimSubsystem = new AimSubsystem();
   private final ShooterSubsystem sub_shooterSubsystem = new ShooterSubsystem();
 
   /*
   ---------------------------------------------------------Commands------------------------------------------------------------------------
   */
   
-  //Lift related commands
+  //Lift commands
 
   private final LiftUpCommand cmd_liftUpCommand = new LiftUpCommand(sub_liftSubsystem);
   private final LiftDownCommand cmd_liftDownCommand = new LiftDownCommand(sub_liftSubsystem);
 
 
-  //Feed related commands
+  //Feed commands
   
   private final FeedInCommand cmd_feedInCommand = new FeedInCommand(sub_feedSubsystem);
   private final FeedOutCommand cmd_feedOutCommand = new FeedOutCommand(sub_feedSubsystem);
 
-  //Intake related commands
+  //Intake commands
   private final IntakeCommand cmd_intakeCommand = new IntakeCommand(sub_intakeSubsystem);
   private final OuttakeCommand cmd_outtakeCommand = new OuttakeCommand(sub_intakeSubsystem);
 
-  //Shooter related commands
+  //Shooter commands
+
+  private final AimCommand cmd_aimCommand = new AimCommand(sub_aimSubsystem);
   private final ShooterCommand cmd_shooterCommand = new ShooterCommand(sub_shooterSubsystem);
 
 
 
+  //Auto commands
   private final AutoCommand cmd_autoCommand = new AutoCommand(sub_driveTrainSubsystem);
 
 
@@ -119,6 +123,9 @@ public class RobotContainer {
     //Shooter buttons!
     JoystickButton b_shootButton = new JoystickButton(buttonsJoystick, Constants.SHOOT_BUTTON);
     b_shootButton.whileHeld(cmd_shooterCommand, Constants.NOT_INTERRUPTIBLE);
+
+    JoystickButton b_aimButton = new JoystickButton(driveJoystick, Constants.AIM_BUTTON);
+    b_aimButton.whileHeld(cmd_aimCommand, Constants.INTERRUPTIBLE);
 
   }
 

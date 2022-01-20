@@ -69,14 +69,15 @@ public final class Constants {
     public static double FEED_LEFT_OUT_SPEED = -1.0;
     public static double FEED_RIGHT_OUT_SPEED = 1.0;
 
-    public static double SHOOTER_SPEED = 0.8;
+    public static double SHOOTER_SPEED = 1.0;
     //(2048.0 / 600.0) * RPM; //600 is a modifer to get min to 100 ms and 2048 gets rotations to units 
 
 
-    //Buttons
+    //Joystick Constants
     public static boolean NOT_INTERRUPTIBLE = false;
     public static boolean INTERRUPTIBLE = true;
 
+    //Drive Joystick Buttons
     public static int LIFT_UP_BUTTON = 1;
     public static int LIFT_DOWN_BUTTON = 2;
 
@@ -88,7 +89,10 @@ public final class Constants {
 
     public static int SHOOT_BUTTON = 7;
     
+    //Buttons Joystick Buttons
+    public static int AIM_BUTTON = 1;
 
-
-
+    //PID Constants
+    public static double KP_DRIVE_AIM = 0.85;
+    public static double MIN_COMMAND_DRIVE_AIM = 0.05;
 }

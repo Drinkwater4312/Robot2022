@@ -7,6 +7,8 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
+
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -26,6 +28,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public void m_shoot()
   {
+    
     leftShooterMotor.set(TalonFXControlMode.PercentOutput, Constants.SHOOTER_SPEED);
     rightShooterMotor.set(TalonFXControlMode.PercentOutput, -Constants.SHOOTER_SPEED);
     /*
