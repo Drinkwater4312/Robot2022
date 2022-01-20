@@ -58,9 +58,9 @@ public class AimSubsystem extends SubsystemBase {
       steering_adjust = Constants.KP_DRIVE_AIM*heading_error + Constants.MIN_COMMAND_DRIVE_AIM;
     }
     LEFT_FRONT_DRIVE_MOTOR.set(TalonFXControlMode.PercentOutput, -steering_adjust);
-    LEFT_BACK_DRIVE_MOTOR.set(TalonFXControlMode.PercentOutput, -steering_adjust);
+    LEFT_BACK_DRIVE_MOTOR.set(TalonFXControlMode.PercentOutput, steering_adjust);
     RIGHT_FRONT_DRIVE_MOTOR.set(TalonFXControlMode.PercentOutput, steering_adjust);
-    RIGHT_BACK_DRIVE_MOTOR.set(TalonFXControlMode.PercentOutput, steering_adjust);
+    RIGHT_BACK_DRIVE_MOTOR.set(TalonFXControlMode.PercentOutput, -steering_adjust);
   }
   
 }
