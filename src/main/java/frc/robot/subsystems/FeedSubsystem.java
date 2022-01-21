@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
@@ -13,19 +15,38 @@ import frc.robot.Constants;
 
 public class FeedSubsystem extends SubsystemBase {
   /** Creates a new FeedSubsystem. */
-  private static TalonFX leftFeedMotor = new TalonFX(Constants.FEED_LEFT_MOTOR_PORT);
-  private static TalonFX rightFeedMotor = new TalonFX(Constants.FEED_RIGHT_MOTOR_PORT);
-  public FeedSubsystem() {}
+  private final DigitalInput irSensor1;
+  private final DigitalInput irSensor2;
+
+  Servo feedServo = new Servo(Constants.FEED_SERVO_PORT);
+
+  private static double intakeAngle = 30.0;
+
+  public FeedSubsystem() {
+    irSensor1 = new DigitalInput(Constants.IR_SENSOR_1_PORT);
+    irSensor2 = new DigitalInput(Constants.IR_SENSOR_2_PORT);}
 
   public void m_feedIn(){
-    leftFeedMotor.set(TalonFXControlMode.PercentOutput, Constants.FEED_LEFT_IN_SPEED);
-    rightFeedMotor.set(TalonFXControlMode.PercentOutput, Constants.FEED_RIGHT_IN_SPEED);
+    feedServo.setAngle(intakeAngle);
   }
 
-  public void m_feedOut(){
-    leftFeedMotor.set(TalonFXControlMode.PercentOutput, Constants.FEED_LEFT_OUT_SPEED);
-    rightFeedMotor.set(TalonFXControlMode.PercentOutput, Constants.FEED_RIGHT_OUT_SPEED);
+  public void m_feedInManual(){
+    feedServo.set(Constants.FEED_SERVO_SPEED);
   }
+  public void m_feedOut(){
+    feedServo.setAngle(-intakeAngle);;
+  }
+  public void m_stopFeed(){
+    feedServo.set(0); //clearly this is to stop the servo
+  }
+  public boolean m_getSensor1(){
+    return irSensor1.get();
+  }
+
+  public boolean m_getSensor2(){
+    return irSensor2.get();
+  }
+
 
   @Override
   public void periodic() {

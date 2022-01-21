@@ -22,6 +22,10 @@ public final class Constants {
     public static int Z = 2;
     public static int S = 3;
 
+    //IR Sensors
+    public static int IR_SENSOR_1_PORT = 0;
+    public static int IR_SENSOR_2_PORT = 1;
+    
     //Motor Ports
     public static int LEFT_FRONT_DRIVE_MOTOR_PORT = 0;
     public static int LEFT_BACK_DRIVE_MOTOR_PORT = 1;
@@ -33,8 +37,7 @@ public final class Constants {
 
     public static int INTAKE_MOTOR_PORT = 6;
 
-    public static int FEED_LEFT_MOTOR_PORT = 7;
-    public static int FEED_RIGHT_MOTOR_PORT = 8;
+    public static int FEED_SERVO_PORT = 7;
 
     public static int SHOOTER_LEFT_MOTOR_PORT = 21;
     public static int SHOOTER_RIGHT_MOTOR_PORT = 22;
@@ -64,12 +67,9 @@ public final class Constants {
     public static double INTAKE_SPEED = 1.0;
     public static double OUTTAKE_SPEED = -1.0;
 
-    public static double FEED_LEFT_IN_SPEED = 1.0;
-    public static double FEED_RIGHT_IN_SPEED = -1.0; 
-    public static double FEED_LEFT_OUT_SPEED = -1.0;
-    public static double FEED_RIGHT_OUT_SPEED = 1.0;
-
     public static double SHOOTER_SPEED = 1.0;
+
+    public static double FEED_SERVO_SPEED = 1.0;
     //(2048.0 / 600.0) * RPM; //600 is a modifer to get min to 100 ms and 2048 gets rotations to units 
 
 

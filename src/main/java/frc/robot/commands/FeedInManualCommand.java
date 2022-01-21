@@ -7,13 +7,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.FeedSubsystem;
 
-public class FeedInCommand extends CommandBase {
-  /** Creates a new FeedInCommand. */
+public class FeedInManualCommand extends CommandBase {
+  /** Creates a new FeedInManualCommand. */
   private FeedSubsystem sub_feedSubsystem;
-  //first IR sensor is close to flywheel
-  private boolean firstIRSensor, secondIRSensor;
-  
-  public FeedInCommand(FeedSubsystem subsystem) {
+  public FeedInManualCommand(FeedSubsystem subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     sub_feedSubsystem = subsystem;
     addRequirements(sub_feedSubsystem);
@@ -25,20 +22,8 @@ public class FeedInCommand extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {   
-    firstIRSensor = sub_feedSubsystem.m_getSensor1();
-    secondIRSensor = sub_feedSubsystem.m_getSensor2();
-
-    if(firstIRSensor && secondIRSensor){
-      sub_feedSubsystem.m_stopFeed();
-    }else if(!firstIRSensor && secondIRSensor){
-      sub_feedSubsystem.m_feedIn();
-    }else if(firstIRSensor && !secondIRSensor){
-      sub_feedSubsystem.m_stopFeed();
-    }else if(!firstIRSensor && !secondIRSensor){
-      sub_feedSubsystem.m_stopFeed();
-    }
-
+  public void execute() {
+    sub_feedSubsystem.m_feedInManual();
   }
 
   // Called once the command ends or is interrupted.

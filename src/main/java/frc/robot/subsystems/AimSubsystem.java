@@ -24,31 +24,30 @@ public class AimSubsystem extends SubsystemBase {
 
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
   NetworkTableEntry tx = table.getEntry("tx");
+  NetworkTableEntry ta = table.getEntry("ta");
+
   static double steering_adjust = 0.0;
 
   
   public AimSubsystem() {}
 
   public void m_TurnOnLimelight(){
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(0); 
+    table.getEntry("ledMode").setNumber(0); 
   }
 
   public void m_TurnOffLimelight(){
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);  
+    table.getEntry("ledMode").setNumber(1);  
   }
 
 
   public void m_aim(){
     double x = tx.getDouble(0.0);
-
+    double area = ta.getDouble(0.0);
     double heading_error = -x;
 
     SmartDashboard.putNumber("Steering Adjust", steering_adjust);
     SmartDashboard.putNumber("Limelight x", x);
 
-    //I believe 1.0 is in degrees so this is a tight margin
-    //We don't want too small of an error to result in no movement from the motors so this is necessary, but we will see if it's
-    //too hardcore.
     if (x > 1.0) 
     {
       steering_adjust = Constants.KP_DRIVE_AIM*heading_error - Constants.MIN_COMMAND_DRIVE_AIM;

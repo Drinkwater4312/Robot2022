@@ -53,6 +53,7 @@ public class RobotContainer {
   //Feed commands
   
   private final FeedInCommand cmd_feedInCommand = new FeedInCommand(sub_feedSubsystem);
+  private final FeedInManualCommand cmd_feedInManualCommand = new FeedInManualCommand(sub_feedSubsystem);
   private final FeedOutCommand cmd_feedOutCommand = new FeedOutCommand(sub_feedSubsystem);
 
   //Intake commands
@@ -80,13 +81,15 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
+    configureButtonBindings();
+
         sub_driveTrainSubsystem.setDefaultCommand(
       new DriveCommand(sub_driveTrainSubsystem, 
       () -> -driveJoystick.getRawAxis(Constants.X),
       () -> -driveJoystick.getRawAxis(Constants.Y), 
       () -> -driveJoystick.getRawAxis(Constants.Z)));
 
-    configureButtonBindings();
+      sub_feedSubsystem.setDefaultCommand(cmd_feedInCommand);
   }
 
   /**
@@ -107,7 +110,7 @@ public class RobotContainer {
 
     //Feed buttons!
     JoystickButton b_feedInButton = new JoystickButton(buttonsJoystick, Constants.FEED_IN_BUTTON);
-    b_feedInButton.whileHeld(cmd_feedInCommand, Constants.INTERRUPTIBLE);
+    b_feedInButton.whileHeld(cmd_feedInManualCommand, Constants.INTERRUPTIBLE);
 
     JoystickButton b_feedOutButton = new JoystickButton(buttonsJoystick, Constants.FEED_OUT_BUTTON);
     b_feedOutButton.whileHeld(cmd_feedOutCommand, Constants.NOT_INTERRUPTIBLE);
