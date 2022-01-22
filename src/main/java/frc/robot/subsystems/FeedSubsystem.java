@@ -7,14 +7,11 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
-
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class FeedSubsystem extends SubsystemBase {
   /** Creates a new FeedSubsystem. */
+ 
   private final DigitalInput irSensor1;
   private final DigitalInput irSensor2;
 
@@ -31,7 +28,7 @@ public class FeedSubsystem extends SubsystemBase {
   }
 
   public void m_feedInManual(){
-    feedServo.set(Constants.FEED_SERVO_SPEED);
+    feedServo.setAngle(intakeAngle);
   }
   public void m_feedOut(){
     feedServo.setAngle(-intakeAngle);;
@@ -52,4 +49,5 @@ public class FeedSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
+  
 }

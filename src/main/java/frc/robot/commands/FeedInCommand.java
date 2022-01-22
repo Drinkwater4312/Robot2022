@@ -9,6 +9,7 @@ import frc.robot.subsystems.FeedSubsystem;
 
 public class FeedInCommand extends CommandBase {
   /** Creates a new FeedInCommand. */
+ 
   private FeedSubsystem sub_feedSubsystem;
   //first IR sensor is close to flywheel
   private boolean firstIRSensor, secondIRSensor;
@@ -50,4 +51,5 @@ public class FeedInCommand extends CommandBase {
   public boolean isFinished() {
     return false;
   }
+  
 }

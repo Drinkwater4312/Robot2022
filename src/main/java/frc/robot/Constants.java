@@ -23,8 +23,8 @@ public final class Constants {
     public static int S = 3;
 
     //IR Sensors
-    public static int IR_SENSOR_1_PORT = 0;
-    public static int IR_SENSOR_2_PORT = 1;
+    public static int IR_SENSOR_1_PORT = 8;
+    public static int IR_SENSOR_2_PORT = 9;
     
     //Motor Ports
     public static int LEFT_FRONT_DRIVE_MOTOR_PORT = 0;
