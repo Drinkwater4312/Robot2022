@@ -110,10 +110,10 @@ public class RobotContainer {
 
     //Feed buttons!
     JoystickButton b_feedInButton = new JoystickButton(buttonsJoystick, Constants.FEED_IN_BUTTON);
-    b_feedInButton.whileHeld(cmd_feedInManualCommand, Constants.INTERRUPTIBLE);
+    b_feedInButton.whenPressed(cmd_feedInManualCommand, Constants.INTERRUPTIBLE);
 
     JoystickButton b_feedOutButton = new JoystickButton(buttonsJoystick, Constants.FEED_OUT_BUTTON);
-    b_feedOutButton.whileHeld(cmd_feedOutCommand, Constants.NOT_INTERRUPTIBLE);
+    b_feedOutButton.whenPressed(cmd_feedOutCommand, Constants.NOT_INTERRUPTIBLE);
 
 
     //Intake buttons!

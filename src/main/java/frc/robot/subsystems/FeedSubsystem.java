@@ -20,7 +20,7 @@ public class FeedSubsystem extends SubsystemBase {
 
   Servo feedServo = new Servo(Constants.FEED_SERVO_PORT);
 
-  private static double intakeAngle = 30.0;
+  private static double intakeAngle = 90.0;
 
   public FeedSubsystem() {
     irSensor1 = new DigitalInput(Constants.IR_SENSOR_1_PORT);
